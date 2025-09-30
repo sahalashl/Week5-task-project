@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Freelance Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test\", \"email\": \"test@example.com\", \"password\": \"test123\", \"role\": \"user\"}"
+        }
+      }
+    },
+    {
+      "name": "Login (admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"admin@demo.com\", \"password\": \"admin123\"}"
+        }
+      }
+    },
+    {
+      "name": "List Jobs (Public)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/jobs"
+      }
+    },
+    {
+      "name": "Create Job (User)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/jobs",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Portfolio site\", \"description\": \"Build portfolio\", \"budget\": 150}"
+        }
+      }
+    },
+    {
+      "name": "Admin: List All Jobs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/admin/jobs"
+      }
+    },
+    {
+      "name": "Admin: Approve Job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/admin/jobs/:id/approve"
+      }
+    },
+    {
+      "name": "Freelancer: Create Proposal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/proposals",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"jobId\": \"<jobId>\", \"coverLetter\": \"I can do this\", \"bid\": 180}"
+        }
+      }
+    },
+    {
+      "name": "Freelancer: My Proposals",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/proposals/mine"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

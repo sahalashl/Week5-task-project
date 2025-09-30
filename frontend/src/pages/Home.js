@@ -1,0 +1,1 @@
+import React from 'react';export default function Home(){return(<div><h1>Freelance Job Platform</h1><p>Welcome! Use the navigation to explore jobs and sign up.</p></div>);}

@@ -1,0 +1,1 @@
+const mongoose=require('mongoose');const JobSchema=new mongoose.Schema({title:String,description:String,budget:Number,createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},status:{type:String,enum:['pending','approved','closed'],default:'pending'},createdAt:{type:Date,default:Date.now}});module.exports=mongoose.model('Job',JobSchema);
